@@ -2,10 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function loginAdmin() {}
-    public function loginClient() {}
+    public function loginAdmin()
+    {
+        $user = User::find(1);
+        Auth::login($user);
+
+        return redirect()
+            ->route('home');
+    }
+    public function loginClient()
+    {
+        $user = Client::find(1);
+        Auth::login($user);
+
+        return redirect()
+            ->route('home');
+    }
+    public function loginEmployee() {}
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()
+            ->route('login');
+    }
 }
