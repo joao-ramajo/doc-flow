@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Policies\ClientPolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+#[UsePolicy(ClientPolicy::class)]
 class Client extends Model
 {
     public function business(): BelongsTo
