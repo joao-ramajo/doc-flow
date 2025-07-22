@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/home', [MainController::class, 'index'])->name('home');
+
+    Route::get('/subir-documentos', [MainController::class, 'documentForm'])->name('document.register');
+    Route::get('/cadastrar-cliente', [MainController::class, 'clientForm'])->name('client.register');
+
+    Route::prefix('client')->group(function () {
+        Route::post('/', [ClientController::class, 'store'])->name('client.store');
+    });
 });

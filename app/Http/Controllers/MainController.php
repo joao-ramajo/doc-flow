@@ -27,4 +27,18 @@ class MainController extends Controller
             'documents' => $documents
         ]);
     }
+
+    public function documentForm()
+    {
+        echo "Formulario do docmento";
+    }
+
+    public function clientForm()
+    {
+        $business = Business::find(Auth::user()->business_id);
+
+        return view('register.client', [
+            'business' => $business
+        ]);
+    }
 }
