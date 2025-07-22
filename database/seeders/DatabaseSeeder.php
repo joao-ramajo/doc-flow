@@ -15,29 +15,37 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $users = [
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'role' => 'admin',
-            'business_id' => 1,
-            'email_verified_at' => now(),
-            'password' => bcrypt('123456')
+            [
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'role' => 'admin',
+                'business_id' => 1,
+                'email_verified_at' => now(),
+                'password' => bcrypt('123456')
+            ],
+            [
+                'name' => 'John Doe',
+                'email' => 'john.doe@gmail.com',
+                'role' => 'employee',
+                'business_id' => 1,
+                'email_verified_at' => now(),
+                'password' => bcrypt('123456')
+            ],
         ];
         $clients = [
             'business_id' => 1,
-            'name' => 'John Doe',
+            'name' => 'Client 1',
             'cpf' => '52117712819',
             'rg' => '554102780X',
-            'email' => 'john.doe@gmail.com',
             'phone' => '11946289761'
         ];
+
         $business = [
             'name' => 'Synic CO'
         ];
 
-        DB::table('business')->insert($business);
+        DB::table('businesses')->insert($business);
         DB::table('users')->insert($users);
         DB::table('clients')->insert($clients);
-
-
     }
 }

@@ -19,6 +19,11 @@ class User extends Authenticatable
         return $this->hasMany(Client::class);
     }
 
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class);
+    }
+
     public function business(): BelongsTo
     {
         return $this->belongsTo(Business::class);

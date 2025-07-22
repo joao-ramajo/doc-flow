@@ -17,15 +17,15 @@ class AuthController extends Controller
         return redirect()
             ->route('home');
     }
-    public function loginClient()
+
+    public function loginEmployee()
     {
-        $user = Client::find(1);
+        $user = User::find(2);
         Auth::login($user);
 
         return redirect()
             ->route('home');
     }
-    public function loginEmployee() {}
 
     public function logout()
     {

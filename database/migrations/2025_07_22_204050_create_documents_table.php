@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreignId('business_id')->references('id')->on('business')->onDelete('cascade');
-            $table->string('path', 100);
+            $table->foreignId('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->string('title', 50);
+            $table->string('path', 100);
             $table->string('observations', 100)->nullable();
             $table->string('doc_type', 20);
             

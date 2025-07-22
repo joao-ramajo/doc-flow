@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,5 @@ Route::middleware(['auth'])->group(function () {
     Route::redirect('/', '/home');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/home', function () {
-        echo "OLA " . Auth::user()->name;
-    })->name('home');
+    Route::get('/home', [MainController::class, 'index'])->name('home');
 });
