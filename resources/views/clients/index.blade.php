@@ -41,7 +41,8 @@
 
                                 <div class="mt-auto">
                                     <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-outline-primary" download>
+                                        <a href="{{ route('document.download', ['document_id' => Crypt::encrypt($document->id)]) }}"
+                                            class="btn btn-outline-primary">
                                             <i class="bi bi-download me-1"></i>Baixar documento
                                         </a>
                                         <a href="{{ route('document.index', ['document_id' => Crypt::encrypt($document->id), 'user_id' => Crypt::encrypt(Auth::user()->id)]) }}"

@@ -114,11 +114,22 @@ class DocumentController extends Controller
 
             return redirect()
                 ->back()
-                ->with('success', 'Documento apagado com sucesso'); 
+                ->with('success', 'Documento apagado com sucesso');
         } else {
             return redirect()
                 ->back()
                 ->with('error', 'Houve um erro ao apagar o documento, nenhuma alteração realizada');
         }
+    }
+
+    public function download(string $document_id)
+    {
+        $id = Crypt::decrypt($document_id);
+
+        $document = ModelsDocument::find($id);
+
+        $title = str_replace(' ', '_', $document->title);
+  
+        return Storage::download($document->path, $title . '.' . $document->doc_type);
     }
 }
