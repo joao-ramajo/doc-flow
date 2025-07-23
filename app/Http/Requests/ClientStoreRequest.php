@@ -25,6 +25,7 @@ class ClientStoreRequest extends FormRequest
         return [
             'business_id' => 'exists:businesses,id',
             'name' => 'required|string|max:50',
+            'email' => 'required|email|max:50|',
             'cpf' => [
                 'required',
                 'unique:clients',

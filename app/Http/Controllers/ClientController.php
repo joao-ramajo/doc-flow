@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientStoreRequest;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -28,7 +29,19 @@ class ClientController extends Controller
      */
     public function store(ClientStoreRequest $request)
     {
-        dd($request);
+        $client = new Client();
+        $client->name = $request->input('name');
+        $client->email = $request->input('email');
+        $client->phone = $request->input('phone');
+        $client->cpf = $request->input('cpf');
+        $client->rg = $request->input('rg');
+        $client->business_id = $request->input('business_id');
+
+        $client->save();
+
+        return redirect()
+            ->route('home')
+            ->with('success', 'Cliente cadastrado com sucesso');
     }
 
     /**

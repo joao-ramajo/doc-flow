@@ -20,4 +20,14 @@ class Client extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    protected $fillable = [
+        'name',
+        'bussiness_id',
+        'email',
+        'password',
+        'cpf',
+        'rg',
+        'phone'
+    ];
 }

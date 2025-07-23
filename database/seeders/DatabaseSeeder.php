@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $clients = [
             'business_id' => 1,
             'name' => 'Client 1',
+            'email' => 'client_1@gmail.com',
             'cpf' => '52117712819',
             'rg' => '554102780X',
             'phone' => '11946289761'

@@ -15,6 +15,14 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                    name="email" maxlength="50" value="{{ old('email') }}" maxlength="50">
+                @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
