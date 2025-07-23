@@ -9,6 +9,7 @@ use Dom\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -21,7 +22,20 @@ class DocumentController extends Controller
         $user_id = Crypt::decrypt($user_id);
         $document = ModelsDocument::find($document_id);
 
-        dd($document);
+        $filePath = $document->path;
+
+        if (!Storage::exists($filePath)) {
+            return redirect()
+                ->with('error', 'Arquivo não encontrado no sistema');
+        }
+
+        $mimeType = Storage::mimeType($filePath);
+
+        // Resposta que força exibição inline no navegador
+        return Storage::response($filePath, $document->title . '.' . $document->doc_type, [
+            'Content-Type' => $mimeType,
+            'Content-Disposition' => 'inline; filename="' . $document->title . '.' . $document->doc_type . '"',
+        ]);
     }
 
     /**
