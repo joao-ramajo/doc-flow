@@ -4,9 +4,13 @@
             <p class="fs-5 mb-2">
                 <i class="bi bi-person-circle me-2"></i>Nome: <strong>{{ $client->name }}</strong>
             </p>
-            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left-circle me-1"></i>Voltar
-            </a>
+            <div class="d-flex gap-3">
+                <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left-circle me-1"></i>Voltar
+                </a>
+                <a href="{{ route('document.register', ['client_id' => Crypt::encrypt($client->id)]) }}"
+                    class="btn btn-outline-primary">Novo Documento</a>
+            </div>
         </div>
 
         <div class="row g-4">

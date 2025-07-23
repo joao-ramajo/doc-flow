@@ -29,9 +29,12 @@ class MainController extends Controller
         ]);
     }
 
-    public function documentForm()
+    public function documentForm(string $client_id)
     {
-        echo "Formulario do docmento";
+        $id = Crypt::decrypt($client_id);
+
+        $client = Client::find($id);
+        return view('register.document', ['client' => $client]);
     }
 
     public function clientForm()

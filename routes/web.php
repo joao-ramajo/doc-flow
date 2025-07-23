@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [MainController::class, 'index'])->name('home');
 
-    Route::get('/subir-documentos', [MainController::class, 'documentForm'])->name('document.register');
+    Route::get('/subir-documentos/{client_id}', [MainController::class, 'documentForm'])->name('document.register');
     Route::get('/cadastrar-cliente', [MainController::class, 'clientForm'])->name('client.register');
 
     Route::prefix('client')->group(function () {
@@ -30,7 +30,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}', [MainController::class, 'clientDocuments'])->name('client.documents');
     });
 
-    Route::prefix('document')->group(function(){
+    Route::prefix('document')->group(function () {
         Route::get('/{document_id}/{user_id}', [DocumentController::class, 'index'])->name('document.index');
+        Route::post('/', [DocumentController::class, 'store'])->name('document.store');
     });
 });
