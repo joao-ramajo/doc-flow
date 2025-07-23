@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +28,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('client')->group(function () {
         Route::post('/', [ClientController::class, 'store'])->name('client.store');
         Route::get('/{id}', [MainController::class, 'clientDocuments'])->name('client.documents');
+    });
+
+    Route::prefix('document')->group(function(){
+        Route::get('/{document_id}/{user_id}', [DocumentController::class, 'index'])->name('document.index');
     });
 });

@@ -40,7 +40,8 @@
                                         <a href="#" class="btn btn-outline-primary" download>
                                             <i class="bi bi-download me-1"></i>Baixar documento
                                         </a>
-                                        <a href="#" target="_blank" class="btn btn-outline-success">
+                                        <a href="{{ route('document.index', ['document_id' => Crypt::encrypt($document->id), 'user_id' => Crypt::encrypt(Auth::user()->id)]) }}"
+                                            target="_blank" class="btn btn-outline-success">
                                             <i class="bi bi-eye me-1"></i>Ver conteúdo
                                         </a>
                                         <form action="#" method="POST"
