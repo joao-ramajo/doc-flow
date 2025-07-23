@@ -1,7 +1,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center flex-wrap">
         <p class="mb-2 fs-5">
-            <i class="bi bi-house-door-fill me-2"></i>Bem-vindo
+            <strong>{{ Auth::user()->business->name }}</strong> | {{ Auth::user()->name }}
         </p>
 
         @auth

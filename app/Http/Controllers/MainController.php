@@ -8,6 +8,7 @@ use App\Models\Document as ModelsDocument;
 use Dom\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class MainController extends Controller
 {
@@ -40,5 +41,15 @@ class MainController extends Controller
         return view('register.client', [
             'business' => $business
         ]);
+    }
+
+
+    public function clientDocuments(string $id)
+    {
+        $id = Crypt::decrypt($id);
+
+        $client = Client::with('documents')->where('id', $id)->first();
+
+        return view('clients.index', ['client' => $client]);
     }
 }

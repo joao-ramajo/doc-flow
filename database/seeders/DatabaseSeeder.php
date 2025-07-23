@@ -45,8 +45,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'Synic CO'
         ];
 
+        $documents = [
+            [
+                'user_id' => 2,
+                'client_id' => 1,
+                'business_id' => 1,
+                'title' => 'Document Title Example',
+                'path' => 'documents/521118845/contract.pdf',
+                'observations' => 'Lorem isplum dolor amet',
+                'doc_type' => 'text/pdf'
+            ]
+        ];
+
         DB::table('businesses')->insert($business);
         DB::table('users')->insert($users);
         DB::table('clients')->insert($clients);
+        DB::table('documents')->insert($documents);
     }
 }

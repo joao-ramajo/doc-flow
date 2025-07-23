@@ -1,7 +1,7 @@
 <x-main-layout>
     <main class="container py-4">
         <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-            <h2 class="mb-2">{{ $business->name }}</h2>
+            <h2 class="mb-2">Clientes</h2>
             <ul class="list-unstyled mb-0">
                 <li><i class="bi bi-people-fill me-2"></i>Total de clientes: {{ count($clients) }}</li>
                 <li><i class="bi bi-file-earmark-text-fill me-2"></i>Total de documentos: {{ count($documents) }}</li>
@@ -33,9 +33,11 @@
                                 <ul class="list-unstyled small mb-3">
                                     <li><i class="bi bi-envelope-fill me-2"></i>{{ $client->email }}</li>
                                     <li><i class="bi bi-telephone-fill me-2"></i>{{ $client->phone }}</li>
-                                    <li><i class="bi bi-file-text-fill me-2"></i>Total de Documentos: {{ count($client->documents) }}</li>
+                                    <li><i class="bi bi-file-text-fill me-2"></i>Total de Documentos:
+                                        {{ count($client->documents) }}</li>
                                 </ul>
-                                <a href="#" class="btn btn-outline-success mt-auto">
+                                <a href="{{ route('client.documents', ['id' => Crypt::encrypt($client->id)]) }}"
+                                    class="btn btn-outline-success mt-auto">
                                     <i class="bi bi-folder2-open me-1"></i>Ver documentos
                                 </a>
                             </div>

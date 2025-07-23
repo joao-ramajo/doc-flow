@@ -26,5 +26,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('client')->group(function () {
         Route::post('/', [ClientController::class, 'store'])->name('client.store');
+        Route::get('/{id}', [MainController::class, 'clientDocuments'])->name('client.documents');
     });
 });
