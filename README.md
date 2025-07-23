@@ -1,61 +1,44 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# DocFlow | Laravel File System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema de gerenciamento de documentos baseado em clientes e empresas usando Laravel.
 
-## About Laravel
+Este projeto tem como objetivo a aplicação dos conceitos sobre a manipulação de arquivos e diretorios com as ferramentas do ecosistema `Laravel` como a `Facade Storate` para manipulação de arquivos e pastas dentro de um sistema.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O projeto é baseado na necessidade de pequenas/médias empresas organizarem seus documentos baseado em clientes, visando centralizar o armazenamento de diversos tipos de arquivos para uma melhor performance e controle.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## SUMÁRIO 
+- [Tecnologias Implementadas](#tecnologias-implementadas)
+- [Entidades](#entidades)
+    - [Users](#users)
+    - [Businesses](#businesses)
+    - [Client](#clients)
+    - [Document](#documents)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## TECNOLOGIAS IMPLEMENTADAS
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Usando o ecosistema do `Laravel`a criação e manipulação de pastas e arquivos é feita principalmente pela ferramenta de `Facade` `Storage` que se mostra uma classe poderosa na manipulação destes arquivos, podendo criar, armazenar, editar e excluir  estes elementos, além de outras funcionalidades como o download reescrita e manipulação
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ENTIDADES 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Para o desenvolvimento do projeto, estimei 3 entidades principais, sendo elas: 
 
-## Laravel Sponsors
+### USERS
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+A classe `User` representa um funcionario de uma empresa(Businessses) que pode ter diversos clientes atrelados a sua empresa, podendo cadastrar novos arquivos ou clientes conforme sua necessidade.
 
-### Premium Partners
+### BUSINESSES
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+A classe `Business` representa uma empresa, sua implementação está simples no momento, pois o foco e o desenvolvimento das funcionalidades principais, ela serve de elo entre os funcionarios, clientes e documentos.
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### DOCUMENTS
 
-## Code of Conduct
+A classe `Document` representa um documento salvo para um usuário, ela guarda as informações como quem salvou o arquivo, qual o cliente relacionado e empresa, o diretorio do documento real fica salvo nela para uma manipulação mais fácil.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### CLIENTS
 
-## Security Vulnerabilities
+A clase `Client`representa um cliente interligado entre uma empresa e um documento, eles vão poder ter acesso a seus documentos porém não terão acesso ao sistema de forma comum.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+A ideia é que um cliente pode solicitar acesso a um documento para recuperar ou rever, assim será gerado um link temporario para acessar/baixar o arquivo.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
