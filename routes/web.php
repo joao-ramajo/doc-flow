@@ -33,5 +33,6 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('document')->group(function () {
         Route::get('/{document_id}/{user_id}', [DocumentController::class, 'index'])->name('document.index');
         Route::post('/', [DocumentController::class, 'store'])->name('document.store');
+        Route::delete('/{document_id}', [DocumentController::class, 'destroy'])->name('document.destroy');
     });
 });

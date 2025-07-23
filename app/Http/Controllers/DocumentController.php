@@ -102,8 +102,23 @@ class DocumentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $document_id)
     {
-        //
+        $id = Crypt::decrypt($document_id);
+        $document = ModelsDocument::find($id);
+
+        $result = Storage::delete($document->path);
+
+        if ($result) {
+            $document->delete();
+
+            return redirect()
+                ->back()
+                ->with('success', 'Documento apagado com sucesso'); 
+        } else {
+            return redirect()
+                ->back()
+                ->with('error', 'Houve um erro ao apagar o documento, nenhuma alteração realizada');
+        }
     }
 }

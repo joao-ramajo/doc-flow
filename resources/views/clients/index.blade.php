@@ -48,7 +48,9 @@
                                             target="_blank" class="btn btn-outline-success">
                                             <i class="bi bi-eye me-1"></i>Ver conteúdo
                                         </a>
-                                        <form action="#" method="POST"
+                                        <form
+                                            action="{{ route('document.destroy', ['document_id' => Crypt::encrypt($document->id)]) }}"
+                                            method="POST"
                                             onsubmit="return confirm('Tem certeza que deseja excluir este documento?')">
                                             @csrf
                                             @method('DELETE')

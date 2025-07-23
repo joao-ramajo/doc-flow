@@ -1,8 +1,14 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center flex-wrap">
-        <p class="mb-2 fs-5">
-            <strong>{{ Auth::user()->business->name }}</strong> | {{ Auth::user()->name }}
-        </p>
+        <a href="{{ route('home') }}" style="text-decoration: none; color: black;">
+            <p class="mb-2 fs-5">
+                @auth
+                    <strong>{{ Auth::user()->business->name }}</strong> | {{ Auth::user()->name }}
+                    @else
+                    <strong>DocFlow</strong>
+                @endauth
+            </p>
+        </a>
 
         @auth
             <div class="d-flex gap-2 align-items-center">
